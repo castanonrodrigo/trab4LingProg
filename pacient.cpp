@@ -4,13 +4,13 @@
 
 using namespace std;
 
-Pacient::Pacient(const string name, const int age, const string gender):name(name),age(age),gender(gender){};
+Pacient::Pacient(const string name, const int age, const string gender):name(name),gender(gender),age(age){};
 
 ostream &operator<<(ostream &output, const Pacient  &pacient){
   output << "Nome: "<<pacient.name<<endl
     <<"Idade: "<<pacient.age<<endl
     <<"Genero: "<<pacient.gender<<endl
-    <<pacient.getParticularInfo()<<endl;
+    <<pacient.getParticularInfo()<<endl<<endl;
   return output;
 };
 

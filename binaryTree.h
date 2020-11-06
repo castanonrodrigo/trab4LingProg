@@ -7,10 +7,11 @@
 template <class T>
 class BinaryTree{
   public:
-    BinaryTree(T *node = NULL, BinaryTree * leftPtr = NULL, BinaryTree * rightPtr = NULL):
-      node(node),
-      leftSonPtr(leftPtr),
-      rightSonPtr(rightPtr){};
+    BinaryTree(T *n = NULL, BinaryTree * leftPtr = NULL, BinaryTree * rightPtr = NULL) {
+      node = n;
+      leftSonPtr = leftPtr;
+      rightSonPtr = rightPtr;
+    };
 
     ~BinaryTree(){
       delete leftSonPtr;
@@ -78,7 +79,6 @@ BinaryTree<T> *BinaryTree<T>::operator()(const std::string name){
 
 template<class O>
 std::ostream &operator<<(std::ostream &output, const BinaryTree<O> &n){
-  //percorre árvore na ordem simetrica printando nos
   if (n.leftSonPtr != NULL){
     output<<(*n.leftSonPtr);
   }

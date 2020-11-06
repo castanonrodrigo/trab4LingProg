@@ -1,5 +1,4 @@
 #include "oncologistPacient.h"
-#include "pacient.h"
 #include <ostream>
 #include <string>
 #include <iostream>

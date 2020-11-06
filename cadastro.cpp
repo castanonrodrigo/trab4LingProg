@@ -14,6 +14,8 @@ void Cadastro::addPacient(Pacient *pacient) throw(exception){
   BinaryTree<Pacient> *ptr = (*tree)+=pacient;
   if (ptr == NULL){
     throw PacientAlreadyExistsException();
+  }else{
+    cout<<"paciente "<<ptr->getNode()->getName()<< " adicionado com sucesso"<<endl;
   }
 }
 void Cadastro::findPacient(const std::string name) throw(exception){
@@ -27,5 +29,6 @@ void Cadastro::findPacient(const std::string name) throw(exception){
 }
 
 void Cadastro::listPacients()const{
+  cout<<"LISTA DE PACIENTES"<<endl;
   cout<<(*tree);
 }

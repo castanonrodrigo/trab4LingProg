@@ -3,7 +3,6 @@
 #include <iostream>
 #include <iomanip>
 #include "pacient.h"
-using namespace std;
 template <class T>
 class BinaryTree{
   public:
@@ -13,6 +12,7 @@ class BinaryTree{
       delete rightSonPtr;
     }
     BinaryTree *operator+=(T &);
+    BinaryTree *operator()(const std::string);
     T &getNode();
     BinaryTree *getLeftSon(){return leftSonPtr;};
     BinaryTree *getRightSon(){return rightSonPtr;};
@@ -30,23 +30,42 @@ T &BinaryTree<T>::getNode(){
 
 template<class T>
 BinaryTree<T> *BinaryTree<T>::operator+=(T &newNode){
+  BinaryTree *ptr = NULL;
   if (newNode.getName() == node.getName()){
     return NULL;
   }else if (newNode.getName() < node.getName()){
     if (rightSonPtr == NULL){
       rightSonPtr = new BinaryTree<T>(newNode);
-      return rightSonPtr;
+      ptr = rightSonPtr;
     }else{
-      (*rightSonPtr)+=newNode;
+      ptr = (*rightSonPtr)+=newNode;
     }
   }else{
     if (leftSonPtr == NULL){
       leftSonPtr = new BinaryTree<T>(newNode);
-      return rightSonPtr;
+      ptr = leftSonPtr;
     }else{
-      (*leftSonPtr)+=newNode;
+      ptr = (*leftSonPtr)+=newNode;
     }
   }
-  return NULL;
+  return ptr;
+}
+
+template<class T>
+BinaryTree<T> *BinaryTree<T>::operator()(const std::string name){
+  if (name < node.getName()){
+    if (rightSonPtr == NULL){
+      return NULL;
+    }else{
+      return (*rightSonPtr)(name);
+    }
+  }else if (name > node.getName()){
+    if(leftSonPtr == NULL){
+      return NULL;
+    }else{
+      return (*leftSonPtr)(name);
+    }
+  }
+  return this;
 }
 #endif

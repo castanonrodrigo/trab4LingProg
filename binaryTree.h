@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 #include <iostream>
+#include <ostream>
 #include "pacient.h"
 template <class T>
 class BinaryTree{
@@ -18,7 +19,7 @@ class BinaryTree{
     }
 
     template<class O>
-    friend std::ostream &operator<<(std::ostream&, BinaryTree<O> &);
+    friend std::ostream &operator<<(std::ostream&, const BinaryTree<O> &);
 
     BinaryTree *operator+=(T &);
     BinaryTree *operator()(const std::string);
@@ -69,4 +70,18 @@ BinaryTree<T> *BinaryTree<T>::operator()(const std::string name){
   }
   return this;
 }
+
+template<class O>
+std::ostream &operator<<(std::ostream &output, const BinaryTree<O> &n){
+  //percorre árvore na ordem simetrica printando nos
+  if (n.leftSonPtr != NULL){
+    output<<(*n.leftSonPtr);
+  }
+  output << n.node;
+  if (n.rightSonPtr != NULL){
+    output << (*n.rightSonPtr);
+  }
+  return output;
+}
+
 #endif

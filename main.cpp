@@ -20,7 +20,7 @@ int main(){
   BinaryTree<Pacient> *teste = rootNode("Zzzz");
   cout <<teste<<endl;
   cout << teste->getNode().getName()<<endl;
-  cout <<paciente1<<endl;
+  cout <<rootNode<<endl;
 
   /* cout << ptr->getNode().getName()<<endl; */
   /* cout << rootNode.getLeftSon()->getNode().getName()<<endl; */

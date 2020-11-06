@@ -4,20 +4,20 @@
 #include <iostream>
 
 using namespace std;
-Cadastro::Cadastro(const BinaryTree<Pacient> & rootNode):tree(rootNode){};
+Cadastro::Cadastro(BinaryTree<Pacient> * rootNode):tree(rootNode){};
 
-BinaryTree<Pacient> &Cadastro::getRootNode(){
+BinaryTree<Pacient> *Cadastro::getRootNode(){
   return tree;
 }
 
-void Cadastro::addPacient(Pacient &pacient) throw(exception){
-  BinaryTree<Pacient> *ptr = tree+=pacient;
+void Cadastro::addPacient(Pacient *pacient) throw(exception){
+  BinaryTree<Pacient> *ptr = (*tree)+=pacient;
   if (ptr == NULL){
     throw PacientAlreadyExistsException();
   }
 }
 void Cadastro::findPacient(const std::string name) throw(exception){
-  BinaryTree<Pacient> *ptr = tree(name);
+  BinaryTree<Pacient> *ptr = (*tree)(name);
   if (ptr == NULL){
     throw PacientNotFoundException();
   }else{
@@ -27,5 +27,5 @@ void Cadastro::findPacient(const std::string name) throw(exception){
 }
 
 void Cadastro::listPacients()const{
-  cout<<tree;
+  cout<<(*tree);
 }

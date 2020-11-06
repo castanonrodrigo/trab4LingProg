@@ -44,6 +44,6 @@ bool Pacient::operator==(const Pacient & comp){
   }
 }
 
-string Pacient::getParticularInfo()const{
-  return "nothing";
-}
+/* string Pacient::getParticularInfo()const{ */
+/*   return "nothing"; */
+/* } */

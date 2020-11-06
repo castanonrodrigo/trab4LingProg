@@ -2,6 +2,7 @@
 #include "pacient.h"
 #include <ostream>
 #include <string>
+#include <iostream>
 using namespace std;
 
 OncologistPacient::OncologistPacient(const string name, const int age, const string gender, const string tumorReg):

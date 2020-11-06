@@ -8,7 +8,7 @@
 template <class T>
 class BinaryTree{
   public:
-    BinaryTree(T &node, BinaryTree * leftPtr = NULL, BinaryTree * rightPtr = NULL):
+    BinaryTree(T *node, BinaryTree * leftPtr = NULL, BinaryTree * rightPtr = NULL):
       node(node),
       leftSonPtr(leftPtr),
       rightSonPtr(rightPtr){};
@@ -21,9 +21,9 @@ class BinaryTree{
     template<class O>
     friend std::ostream &operator<<(std::ostream&, const BinaryTree<O> &);
 
-    BinaryTree *operator+=(T &);
+    BinaryTree *operator+=(T *);
     BinaryTree *operator()(const std::string);
-    T &getNode();
+    T *getNode();
     BinaryTree *getLeftSon(){return leftSonPtr;};
     BinaryTree *getRightSon(){return rightSonPtr;};
 
@@ -31,19 +31,19 @@ class BinaryTree{
   private:
     BinaryTree * leftSonPtr;
     BinaryTree * rightSonPtr;
-    T node;
+    T *node;
 };
 template<class T>
-T &BinaryTree<T>::getNode(){
+T *BinaryTree<T>::getNode(){
   return node;
 }
 
 template<class T>
-BinaryTree<T> *BinaryTree<T>::operator+=(T &newNode){
+BinaryTree<T> *BinaryTree<T>::operator+=(T *newNode){
   BinaryTree *ptr = NULL;
-  if (newNode.getName() == node.getName()){
+  if (newNode->getName() == node->getName()){
     return NULL;
-  }else if (newNode.getName() < node.getName()){
+  }else if (newNode->getName() < node->getName()){
     if (rightSonPtr == NULL){
       rightSonPtr = new BinaryTree<T>(newNode);
       ptr = rightSonPtr;
@@ -63,9 +63,9 @@ BinaryTree<T> *BinaryTree<T>::operator+=(T &newNode){
 
 template<class T>
 BinaryTree<T> *BinaryTree<T>::operator()(const std::string name){
-  if (name < node.getName()){
+  if (name < node->getName()){
     return rightSonPtr == NULL ? NULL : (*rightSonPtr)(name);
-  }else if (name > node.getName()){
+  }else if (name > node->getName()){
     return leftSonPtr == NULL ? NULL : (*leftSonPtr)(name);
   }
   return this;
@@ -77,7 +77,8 @@ std::ostream &operator<<(std::ostream &output, const BinaryTree<O> &n){
   if (n.leftSonPtr != NULL){
     output<<(*n.leftSonPtr);
   }
-  output << n.node;
+  Pacient *ptr = n.node;
+  output << (*ptr);
   if (n.rightSonPtr != NULL){
     output << (*n.rightSonPtr);
   }

@@ -16,7 +16,7 @@ class Pacient{
     void setName(const std::string);
     void setGender(const std::string);
     void setAge(const int);
-    virtual std::string getParticularInfo() const;
+    virtual std::string getParticularInfo() const = 0;
 
     bool operator<(const Pacient &);
     bool operator>(const Pacient &);

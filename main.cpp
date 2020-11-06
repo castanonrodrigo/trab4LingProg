@@ -13,18 +13,18 @@ int main(){
   /* Pacient paciente5("Saulo", 50, "M"); */
   /* Pacient paciente6("Zzzz", 50, "M"); */
   /* Pacient paciente7("Teste", 50, "M"); */
+
+  OncologistPacient *root = new OncologistPacient("Marcos", 34, "M", "coxa");
   OncologistPacient oncologia1("Marcos", 34, "M", "perna");
   OncologistPacient oncologia2("Maria", 34, "M", "perna");
-  BinaryTree<Pacient> rootNode(oncologia1);
-  Cadastro cad(rootNode);
-  cad.addPacient(oncologia2);
+  OncologistPacient oncologia3("Tadeu", 50, "M", "femur");
+  OncologistPacient oncologia4("Ananda", 50, "M", "femur");
+  BinaryTree<Pacient> rootNode(root);
+  Cadastro cad(&rootNode);
+  cad.addPacient(&oncologia4);
+  cad.addPacient(&oncologia2);
   try{
-    cad.addPacient(oncologia1);
-  }catch(exception &e){
-    cout<<e.what()<<endl;
-  }
-  try{
-    cad.findPacient("Rodolfo");
+  cad.addPacient(&oncologia1);
   }catch(exception &e){
     cout<<e.what()<<endl;
   }

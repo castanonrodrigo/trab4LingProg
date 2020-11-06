@@ -2,7 +2,6 @@
 #define BINARYTREE_H
 #include <iostream>
 #include <iomanip>
-#include <iostream>
 #include <ostream>
 #include "pacient.h"
 template <class T>

@@ -12,3 +12,25 @@ int Pacient::getAge()const{return age;};
 void Pacient::setName(const string n){name = n;};
 void Pacient::setGender(const string g){gender = g;};
 void Pacient::setAge(const int a){age = a;};
+
+bool Pacient::operator<(const Pacient & comp){
+  if (name < comp.getName()){
+    return true;
+  }else{
+    return false;
+  }
+}
+bool Pacient::operator>(const Pacient & comp){
+  if (name > comp.getName()){
+    return true;
+  }else{
+    return false;
+  }
+}
+bool Pacient::operator==(const Pacient & comp){
+  if (name == comp.getName()){
+    return true;
+  }else{
+    return false;
+  }
+}

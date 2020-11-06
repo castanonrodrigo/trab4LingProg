@@ -1,4 +1,4 @@
 CC=g++
 
-trabalho4: main.o
-	$(CC) -o trabalho4 main.o
+trabalho4: main.o pacient.o
+	$(CC) -o trabalho4 main.o pacient.o

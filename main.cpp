@@ -1,19 +1,13 @@
 #include <iostream>
 #include "binaryTree.h"
+#include "pacient.h"
 using namespace std;
 int main(){
-  BinaryTree<int> rootNode(5);
-  cout << rootNode.getNode() <<endl;
-  cout << rootNode.getLeftSon() <<endl;
-  BinaryTree<int> *filho1 = rootNode.addNode(3);
-  BinaryTree<int> *filho2 = rootNode.addNode(4);
-  BinaryTree<int> *filho3 = rootNode.addNode(7);
-  BinaryTree<int> *filho4 = rootNode.addNode(2);
-  /* BinaryTree<int> *filho1 = rootNode+=3; */
-  /* BinaryTree<int> *filho2 = rootNode+=4; */
-  /* BinaryTree<int> *filho3 = rootNode+=7; */
-  /* cout << rootNode.getNode() << endl; */
-  /* cout << (*rootNode.getLeftSon()).getNode()<<endl; */
-  cout << rootNode.getRightSon()->getRightSon()->getNode()<<endl;
+  Pacient paciente1("Rodolfo", 50, "M");
+  Pacient paciente2("Maria", 45, "F");
+  Pacient paciente3("Maria", 45, "F");
+  BinaryTree<Pacient> rootNode(paciente1);
+  BinaryTree<Pacient> *test = rootNode+=paciente2;
+  cout << rootNode.getRightSon()->getNode().getName()<<endl;
   return 1;
 }

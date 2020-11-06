@@ -15,6 +15,10 @@ class Pacient{
     void setGender(const std::string);
     void setAge(const int);
 
+    bool operator<(const Pacient &);
+    bool operator>(const Pacient &);
+    bool operator==(const Pacient &);
+
   private:
     std::string name, gender;
     int age;

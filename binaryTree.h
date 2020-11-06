@@ -8,7 +8,7 @@
 template <class T>
 class BinaryTree{
   public:
-    BinaryTree(T *node, BinaryTree * leftPtr = NULL, BinaryTree * rightPtr = NULL):
+    BinaryTree(T *node = NULL, BinaryTree * leftPtr = NULL, BinaryTree * rightPtr = NULL):
       node(node),
       leftSonPtr(leftPtr),
       rightSonPtr(rightPtr){};
@@ -16,6 +16,7 @@ class BinaryTree{
     ~BinaryTree(){
       delete leftSonPtr;
       delete rightSonPtr;
+      delete node;
     }
 
     template<class O>
@@ -41,21 +42,26 @@ T *BinaryTree<T>::getNode(){
 template<class T>
 BinaryTree<T> *BinaryTree<T>::operator+=(T *newNode){
   BinaryTree *ptr = NULL;
-  if (newNode->getName() == node->getName()){
-    return NULL;
-  }else if (newNode->getName() < node->getName()){
-    if (rightSonPtr == NULL){
-      rightSonPtr = new BinaryTree<T>(newNode);
-      ptr = rightSonPtr;
-    }else{
-      ptr = (*rightSonPtr)+=newNode;
-    }
+  if(node == NULL){
+    node = newNode;
+    ptr = this;
   }else{
-    if (leftSonPtr == NULL){
-      leftSonPtr = new BinaryTree<T>(newNode);
-      ptr = leftSonPtr;
+    if (newNode->getName() == node->getName()){
+      return NULL;
+    }else if (newNode->getName() < node->getName()){
+      if (rightSonPtr == NULL){
+        rightSonPtr = new BinaryTree<T>(newNode);
+        ptr = rightSonPtr;
+      }else{
+        ptr = (*rightSonPtr)+=newNode;
+      }
     }else{
-      ptr = (*leftSonPtr)+=newNode;
+      if (leftSonPtr == NULL){
+        leftSonPtr = new BinaryTree<T>(newNode);
+        ptr = leftSonPtr;
+      }else{
+        ptr = (*leftSonPtr)+=newNode;
+      }
     }
   }
   return ptr;

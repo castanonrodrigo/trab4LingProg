@@ -22,7 +22,7 @@ void Cadastro::findPacient(const std::string name) throw(exception){
     throw PacientNotFoundException();
   }else{
     cout << "PACIENTE ENCONTRADO:"<<endl;
-    cout << ptr->getNode()<<endl;
+    cout << (*ptr->getNode())<<endl;
   }
 }
 

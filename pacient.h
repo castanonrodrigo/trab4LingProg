@@ -6,7 +6,7 @@
 class Pacient{
   friend std::ostream &operator<<(std::ostream&, const Pacient &);
   public:
-    Pacient(std::string, int, std::string);
+    Pacient(const std::string, const int, const std::string);
 
     std::string getName() const;
 
@@ -16,6 +16,7 @@ class Pacient{
     void setName(const std::string);
     void setGender(const std::string);
     void setAge(const int);
+    virtual std::string getParticularInfo() const;
 
     bool operator<(const Pacient &);
     bool operator>(const Pacient &);

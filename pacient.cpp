@@ -4,12 +4,13 @@
 
 using namespace std;
 
-Pacient::Pacient(string name, int age, string gender):name(name),age(age),gender(gender){};
+Pacient::Pacient(const string name, const int age, const string gender):name(name),age(age),gender(gender){};
 
 ostream &operator<<(ostream &output, const Pacient  &pacient){
   output << "Nome: "<<pacient.name<<endl
     <<"Idade: "<<pacient.age<<endl
-    <<"Genero: "<<pacient.gender<<endl;
+    <<"Genero: "<<pacient.gender<<endl
+    <<pacient.getParticularInfo()<<endl;
   return output;
 };
 
@@ -41,4 +42,8 @@ bool Pacient::operator==(const Pacient & comp){
   }else{
     return false;
   }
+}
+
+string Pacient::getParticularInfo()const{
+  return "nothing";
 }

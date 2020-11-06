@@ -1,23 +1,25 @@
 #include <exception>
 #include <iostream>
-#include "binaryTree.h"
 #include "pacient.h"
+#include "binaryTree.h"
 #include "cadastro.h"
+#include "oncologistPacient.h"
 using namespace std;
 int main(){
-  Pacient paciente1("Rodolfo", 50, "M");
-  Pacient paciente2("Maria", 45, "F");
-  Pacient paciente3("Maria", 45, "F");
-  Pacient paciente4("Zeus", 50, "M");
-  Pacient paciente5("Saulo", 50, "M");
-  Pacient paciente6("Zzzz", 50, "M");
-  Pacient paciente7("Teste", 50, "M");
-  BinaryTree<Pacient> rootNode(paciente1);
+  /* Pacient paciente1("Rodolfo", 50, "M"); */
+  /* Pacient paciente2("Maria", 45, "F"); */
+  /* Pacient paciente3("Maria", 45, "F"); */
+  /* Pacient paciente4("Zeus", 50, "M"); */
+  /* Pacient paciente5("Saulo", 50, "M"); */
+  /* Pacient paciente6("Zzzz", 50, "M"); */
+  /* Pacient paciente7("Teste", 50, "M"); */
+  OncologistPacient oncologia1("Marcos", 34, "M", "perna");
+  OncologistPacient oncologia2("Maria", 34, "M", "perna");
+  BinaryTree<Pacient> rootNode(oncologia1);
   Cadastro cad(rootNode);
-  cad.addPacient(paciente2);
-  cad.addPacient(paciente4);
+  cad.addPacient(oncologia2);
   try{
-    cad.addPacient(paciente3);
+    cad.addPacient(oncologia1);
   }catch(exception &e){
     cout<<e.what()<<endl;
   }

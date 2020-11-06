@@ -1,9 +1,17 @@
 #include "pacient.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 Pacient::Pacient(string name, int age, string gender):name(name),age(age),gender(gender){};
+
+ostream &operator<<(ostream &output, const Pacient  &pacient){
+  output << "Nome: "<<pacient.name<<endl
+    <<"Idade: "<<pacient.age<<endl
+    <<"Genero: "<<pacient.gender<<endl;
+  return output;
+};
 
 string Pacient::getName()const{return name;};
 string Pacient::getGender()const{return gender;};

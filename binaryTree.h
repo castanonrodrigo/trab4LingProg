@@ -2,15 +2,24 @@
 #define BINARYTREE_H
 #include <iostream>
 #include <iomanip>
+#include <iostream>
 #include "pacient.h"
 template <class T>
 class BinaryTree{
   public:
-    BinaryTree(T &node, BinaryTree * leftPtr = NULL, BinaryTree * rightPtr = NULL):node(node),leftSonPtr(leftPtr),rightSonPtr(rightPtr){};
+    BinaryTree(T &node, BinaryTree * leftPtr = NULL, BinaryTree * rightPtr = NULL):
+      node(node),
+      leftSonPtr(leftPtr),
+      rightSonPtr(rightPtr){};
+
     ~BinaryTree(){
       delete leftSonPtr;
       delete rightSonPtr;
     }
+
+    template<class O>
+    friend std::ostream &operator<<(std::ostream&, BinaryTree<O> &);
+
     BinaryTree *operator+=(T &);
     BinaryTree *operator()(const std::string);
     T &getNode();
@@ -54,17 +63,9 @@ BinaryTree<T> *BinaryTree<T>::operator+=(T &newNode){
 template<class T>
 BinaryTree<T> *BinaryTree<T>::operator()(const std::string name){
   if (name < node.getName()){
-    if (rightSonPtr == NULL){
-      return NULL;
-    }else{
-      return (*rightSonPtr)(name);
-    }
+    return rightSonPtr == NULL ? NULL : (*rightSonPtr)(name);
   }else if (name > node.getName()){
-    if(leftSonPtr == NULL){
-      return NULL;
-    }else{
-      return (*leftSonPtr)(name);
-    }
+    return leftSonPtr == NULL ? NULL : (*leftSonPtr)(name);
   }
   return this;
 }

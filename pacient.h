@@ -1,8 +1,10 @@
 #ifndef PACIENT_H
 #define PACIENT_H
 #include <string>
+#include <ostream>
 
 class Pacient{
+  friend std::ostream &operator<<(std::ostream&, const Pacient &);
   public:
     Pacient(std::string, int, std::string);
 
